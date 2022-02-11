@@ -67,3 +67,18 @@ var items = from u in users
 
 foreach (var n in items)
     Console.WriteLine($"{n.FirstName} - {n.DateOfBirth}");
+
+List<User> users4 = new List<User>()
+{
+    new User { Name = "Sam", Age = 43 },
+    new User { Name = "Tom", Age = 33 }
+};
+
+var people = from u in users4
+             let name = "Mr. " + u.Name
+             select new
+             {
+                 Name = name,
+                 Age = u.Age
+             };
+
