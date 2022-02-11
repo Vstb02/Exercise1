@@ -45,3 +45,25 @@ foreach (User user in selectedUsers)
     Console.WriteLine($"{user.Name} - {user.Age}");
 
 
+List<User> users2 = new List<User>();
+users2.Add(new User { Name = "Sam", Age = 43 });
+users2.Add(new User { Name = "Tom", Age = 33 });
+
+var names = from u in users select u.Name;
+
+foreach (string n in names)
+    Console.WriteLine(n);
+
+List<User> users3 = new List<User>();
+users3.Add(new User { Name = "Sam", Age = 43 });
+users3.Add(new User { Name = "Tom", Age = 33 });
+
+var items = from u in users
+            select new
+            {
+                FirstName = u.Name,
+                DateOfBirth = DateTime.Now.Year - u.Age
+            };
+
+foreach (var n in items)
+    Console.WriteLine($"{n.FirstName} - {n.DateOfBirth}");
