@@ -23,8 +23,8 @@ static IEnumerable<string> Ranks()
     yield return "туз";
 }
 
-
-var startingDeck = Suits().SelectMany(suit => Ranks().Select(rank => new { Масть = suit, Значение = rank }));
+var r = new Random();
+var startingDeck = (Suits().SelectMany(suit => Ranks().Select(rank => new { Масть = suit, Значение = rank }))).OrderBy(x => r.Next());
 
 foreach (var c in startingDeck)
 {
